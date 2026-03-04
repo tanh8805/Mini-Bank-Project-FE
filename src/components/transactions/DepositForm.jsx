@@ -16,14 +16,14 @@ function DepositForm({ onBalanceUpdate, onHistoryUpdate }) {
       const response = await api.post("/transaction/deposit", {
         amount: Number(amount),
       });
-      const message = response?.data?.message || "Deposit completed.";
+      const message = response?.data?.message || "Nạp tiền thành công.";
       setStatus({ type: "success", message });
       setAmount("");
       onBalanceUpdate?.(response?.data?.balance);
       onHistoryUpdate?.();
     } catch (err) {
       const message =
-        err?.response?.data?.message || "Deposit failed. Please try again.";
+        err?.response?.data?.message || "Nạp tiền thất bại. Vui lòng thử lại.";
       setStatus({ type: "error", message });
     } finally {
       setIsSubmitting(false);
@@ -33,13 +33,13 @@ function DepositForm({ onBalanceUpdate, onHistoryUpdate }) {
   return (
     <div className="rounded-3xl border border-mist/70 bg-white/90 p-6 shadow-glow">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-ink">Deposit</h3>
+        <h3 className="text-lg font-semibold text-ink">Nạp tiền</h3>
         <span className="rounded-full bg-mint/15 px-3 py-1 text-xs font-semibold text-mint">
-          Deposit
+          Nạp tiền
         </span>
       </div>
       <p className="mt-2 text-sm text-slate">
-        Move funds into your account in seconds.
+        Chuyển tiền vào tài khoản trong vài giây.
       </p>
 
       <form className="mt-5 space-y-4" onSubmit={handleSubmit}>
@@ -48,7 +48,7 @@ function DepositForm({ onBalanceUpdate, onHistoryUpdate }) {
             className="text-sm font-medium text-ink"
             htmlFor="depositAmount"
           >
-            Amount
+            Số tiền
           </label>
           <input
             className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
@@ -71,7 +71,7 @@ function DepositForm({ onBalanceUpdate, onHistoryUpdate }) {
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Depositing..." : "Deposit funds"}
+          {isSubmitting ? "Đang nạp tiền..." : "Nạp tiền"}
         </button>
       </form>
     </div>

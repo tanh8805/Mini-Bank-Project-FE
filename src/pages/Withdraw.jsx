@@ -9,7 +9,7 @@ function Withdraw() {
           className="text-sm font-semibold text-ink hover:text-ocean"
           to="/dashboard"
         >
-          ← Back to Dashboard
+          ← Quay lại Bảng điều khiển
         </Link>
         <div className="rounded-3xl border border-mist/70 bg-white/90 p-8 shadow-glow">
           <WithdrawForm />

@@ -48,7 +48,7 @@ function Dashboard() {
       setLastUpdated(new Date());
     } catch (err) {
       const message =
-        err?.response?.data?.message || "Unable to load account details.";
+        err?.response?.data?.message || "Không thể tải thông tin tài khoản.";
       setError(message);
     } finally {
       setIsLoading(false);
@@ -79,7 +79,7 @@ function Dashboard() {
 
   const balanceLabel = showBalance
     ? isLoading
-      ? "Loading..."
+      ? "Đang tải..."
       : formattedBalance
     : "******";
 
@@ -115,11 +115,13 @@ function Dashboard() {
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                MINI BANK
+                NGÂN HÀNG MINI
               </p>
-              <h1 className="text-2xl font-semibold">Your banking dashboard</h1>
+              <h1 className="text-2xl font-semibold">
+                Bảng điều khiển ngân hàng
+              </h1>
               <p className="text-sm text-slate-400">
-                Monitor balances, send transfers, and move funds instantly.
+                Theo dõi số dư, chuyển tiền và điều chuyển quỹ tức thì.
               </p>
             </div>
           </div>
@@ -130,14 +132,14 @@ function Dashboard() {
               type="button"
               onClick={handleRefresh}
             >
-              Refresh
+              Làm mới
             </button>
             <button
               className="rounded-2xl bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
               type="button"
               onClick={handleLogout}
             >
-              Sign out
+              Đăng xuất
             </button>
           </div>
         </header>
@@ -151,9 +153,7 @@ function Dashboard() {
         <section className="rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-lg">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <p className="text-sm font-medium text-slate-400">
-                Total Balance
-              </p>
+              <p className="text-sm font-medium text-slate-400">Tổng số dư</p>
               <div className="mt-2 flex items-center gap-3">
                 <p className="text-3xl font-semibold md:text-4xl">
                   {balanceLabel}
@@ -162,7 +162,7 @@ function Dashboard() {
                   className="rounded-2xl border border-slate-700 bg-slate-900 px-2.5 py-2 text-slate-300 transition hover:text-slate-100"
                   type="button"
                   onClick={() => setShowBalance((prev) => !prev)}
-                  aria-label={showBalance ? "Hide balance" : "Show balance"}
+                  aria-label={showBalance ? "Ẩn số dư" : "Hiện số dư"}
                 >
                   {showBalance ? (
                     <EyeOff className="h-4 w-4" />
@@ -173,7 +173,7 @@ function Dashboard() {
               </div>
 
               <div className="mt-4 flex items-center gap-3">
-                <p className="text-xs text-slate-400">Account number</p>
+                <p className="text-xs text-slate-400">Số tài khoản</p>
                 <p className="text-sm font-semibold text-slate-100">
                   {accountLabel}
                 </p>
@@ -181,7 +181,9 @@ function Dashboard() {
                   className="rounded-2xl border border-slate-700 bg-slate-900 px-2 py-1 text-slate-300 transition hover:text-slate-100"
                   type="button"
                   onClick={() => setShowAccount((prev) => !prev)}
-                  aria-label={showAccount ? "Hide account" : "Show account"}
+                  aria-label={
+                    showAccount ? "Ẩn số tài khoản" : "Hiện số tài khoản"
+                  }
                 >
                   {showAccount ? (
                     <EyeOff className="h-4 w-4" />
@@ -194,13 +196,13 @@ function Dashboard() {
 
             <div className="rounded-2xl border border-slate-800 bg-slate-950/70 px-5 py-4">
               <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
-                Status
+                Trạng thái
               </p>
               <p className="mt-3 text-sm font-semibold text-emerald-300">
-                {isLoading ? "Fetching" : "Active"}
+                {isLoading ? "Đang tải" : "Hoạt động"}
               </p>
               <p className="mt-1 text-xs text-slate-500">
-                Updated {lastUpdated ? lastUpdated.toLocaleTimeString() : "--"}
+                Cập nhật {lastUpdated ? lastUpdated.toLocaleTimeString() : "--"}
               </p>
             </div>
           </div>
@@ -210,9 +212,9 @@ function Dashboard() {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                Quick actions
+                Thao tác nhanh
               </p>
-              <h2 className="mt-2 text-xl font-semibold">Move money fast</h2>
+              <h2 className="mt-2 text-xl font-semibold">Chuyển tiền nhanh</h2>
             </div>
           </div>
 
@@ -224,9 +226,9 @@ function Dashboard() {
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/15 text-emerald-300 transition group-hover:scale-105">
                 <ArrowDownToLine className="h-7 w-7" />
               </div>
-              <p className="mt-4 text-lg font-semibold">Deposit</p>
+              <p className="mt-4 text-lg font-semibold">Nạp tiền</p>
               <p className="mt-1 text-sm text-slate-400">
-                Add funds to your account instantly.
+                Nạp tiền vào tài khoản ngay lập tức.
               </p>
             </Link>
 
@@ -237,9 +239,9 @@ function Dashboard() {
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-400/15 text-amber-200 transition group-hover:scale-105">
                 <ArrowUpFromLine className="h-7 w-7" />
               </div>
-              <p className="mt-4 text-lg font-semibold">Withdraw</p>
+              <p className="mt-4 text-lg font-semibold">Rút tiền</p>
               <p className="mt-1 text-sm text-slate-400">
-                Cash out using your secure PIN.
+                Rút tiền bằng mã PIN bảo mật.
               </p>
             </Link>
 
@@ -250,9 +252,9 @@ function Dashboard() {
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-400/15 text-sky-300 transition group-hover:scale-105">
                 <Send className="h-7 w-7" />
               </div>
-              <p className="mt-4 text-lg font-semibold">Transfer</p>
+              <p className="mt-4 text-lg font-semibold">Chuyển tiền</p>
               <p className="mt-1 text-sm text-slate-400">
-                Move money to another account.
+                Chuyển tiền đến tài khoản khác.
               </p>
             </Link>
           </div>

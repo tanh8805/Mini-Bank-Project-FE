@@ -17,7 +17,7 @@ function TransactionHistoryPage() {
       setTransactions(response?.data?.history ?? []);
     } catch (err) {
       const message =
-        err?.response?.data?.message || "Unable to load transaction history.";
+        err?.response?.data?.message || "Không thể tải lịch sử giao dịch.";
       setError(message);
     } finally {
       setIsLoading(false);
@@ -34,10 +34,10 @@ function TransactionHistoryPage() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate">
-              History
+              Lịch sử
             </p>
             <h1 className="font-display mt-2 text-3xl font-semibold text-ink">
-              Transaction history
+              Lịch sử giao dịch
             </h1>
           </div>
           <button
@@ -45,7 +45,7 @@ function TransactionHistoryPage() {
             type="button"
             onClick={fetchHistory}
           >
-            Refresh
+            Làm mới
           </button>
         </div>
 

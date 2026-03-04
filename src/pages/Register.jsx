@@ -30,12 +30,11 @@ function Register() {
         password: formData.password,
         pin: formData.pin,
       });
-      setSuccess("Account created. Please sign in to continue.");
+      setSuccess("Tạo tài khoản thành công. Vui lòng đăng nhập để tiếp tục.");
       setFormData({ email: "", password: "", pin: "" });
     } catch (err) {
       const message =
-        err?.response?.data?.message ||
-        "Registration failed. Please try again.";
+        err?.response?.data?.message || "Đăng ký thất bại. Vui lòng thử lại.";
       setError(message);
     } finally {
       setIsSubmitting(false);
@@ -44,20 +43,20 @@ function Register() {
 
   return (
     <AuthLayout
-      title="Build your next bank"
-      subtitle="Open a secure account with multi-layer authentication and instant access to your balance."
-      footerText="Already have an account?"
-      footerLink={{ to: "/login", label: "Sign in" }}
+      title="Xây dựng ngân hàng của bạn"
+      subtitle="Mở tài khoản an toàn với xác thực nhiều lớp và truy cập số dư ngay lập tức."
+      footerText="Đã có tài khoản?"
+      footerLink={{ to: "/login", label: "Đăng nhập" }}
     >
       <div>
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-ink">Create account</h2>
+          <h2 className="text-2xl font-semibold text-ink">Tạo tài khoản</h2>
           <span className="rounded-full bg-mist/70 px-3 py-1 text-xs font-semibold text-slate">
-            New
+            Mới
           </span>
         </div>
         <p className="mt-2 text-sm text-slate">
-          Set up your profile and secure pin in under a minute.
+          Thiết lập hồ sơ và mã PIN bảo mật trong chưa đầy một phút.
         </p>
 
         <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
@@ -70,7 +69,7 @@ function Register() {
               id="email"
               name="email"
               type="email"
-              placeholder="name@email.com"
+              placeholder="ten@email.com"
               value={formData.email}
               onChange={handleChange}
               required
@@ -79,14 +78,14 @@ function Register() {
 
           <div>
             <label className="text-sm font-medium text-ink" htmlFor="password">
-              Password
+              Mật khẩu
             </label>
             <input
               className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
               id="password"
               name="password"
               type="password"
-              placeholder="At least 8 characters"
+              placeholder="Ít nhất 8 ký tự"
               value={formData.password}
               onChange={handleChange}
               required
@@ -95,7 +94,7 @@ function Register() {
 
           <div>
             <label className="text-sm font-medium text-ink" htmlFor="pin">
-              6-digit PIN
+              PIN 6 chữ số
             </label>
             <input
               className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
@@ -122,7 +121,7 @@ function Register() {
                 className="font-semibold text-ink hover:text-ocean"
                 to="/login"
               >
-                Sign in
+                Đăng nhập
               </Link>
             </div>
           ) : null}
@@ -132,12 +131,12 @@ function Register() {
             type="submit"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Creating account..." : "Create account"}
+            {isSubmitting ? "Đang tạo tài khoản..." : "Tạo tài khoản"}
           </button>
         </form>
 
         <div className="mt-6 rounded-2xl border border-mist/70 bg-slate-50 px-4 py-3 text-xs text-slate">
-          Your PIN secures transfers and cash withdrawals.
+          Mã PIN bảo vệ các giao dịch chuyển khoản và rút tiền mặt.
         </div>
       </div>
     </AuthLayout>

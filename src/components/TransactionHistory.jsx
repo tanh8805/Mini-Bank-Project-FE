@@ -4,14 +4,14 @@ function TransactionHistory({ transactions = [], isLoading, error }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate">
-            Recent activity
+            Hoạt động gần đây
           </p>
           <h3 className="mt-2 text-lg font-semibold text-ink">
-            Transaction history
+            Lịch sử giao dịch
           </h3>
         </div>
         <span className="rounded-full border border-mist/70 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate">
-          Last 5
+          5 gần nhất
         </span>
       </div>
 
@@ -37,7 +37,7 @@ function TransactionHistory({ transactions = [], isLoading, error }) {
           ))
         ) : transactions.length === 0 ? (
           <div className="rounded-2xl border border-mist/70 bg-slate-50 px-4 py-4 text-sm text-slate">
-            No transactions yet.
+            Chưa có giao dịch.
           </div>
         ) : (
           transactions.map((item) => {
@@ -51,7 +51,7 @@ function TransactionHistory({ transactions = [], isLoading, error }) {
               : item.date || "--";
             const fromLabel = item.fromAccount || item.from || "--";
             const toLabel = item.toAccount || item.to || "--";
-            const statusLabel = item.status || "SUCCESS";
+            const statusLabel = item.status || "Thành công";
             const statusTone = statusLabel.toLowerCase();
             const statusColor =
               statusTone === "success"
@@ -72,14 +72,14 @@ function TransactionHistory({ transactions = [], isLoading, error }) {
                         className={`h-2.5 w-2.5 rounded-full ${statusColor}`}
                       />
                       <p className="text-sm font-semibold text-ink">
-                        {item.type ?? "TRANSACTION"}
+                        {item.type ?? "Giao dịch"}
                       </p>
                     </div>
                     <p className="mt-1 text-xs text-slate">
-                      {item.description || "Banking transfer"}
+                      {item.description || "Chuyển khoản ngân hàng"}
                     </p>
                     <p className="mt-2 text-xs text-slate">
-                      From: {fromLabel} | To: {toLabel}
+                      Từ: {fromLabel} | Đến: {toLabel}
                     </p>
                   </div>
                   <div className="text-right">

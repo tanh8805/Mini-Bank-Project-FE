@@ -19,14 +19,14 @@ function TransactionHistory({ history, isLoading, error }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate">
-            Recent activity
+            Hoạt động gần đây
           </p>
           <h3 className="mt-2 text-lg font-semibold text-ink">
-            Transaction history
+            Lịch sử giao dịch
           </h3>
         </div>
         <span className="rounded-full border border-mist/70 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate">
-          Last 5
+          5 gần nhất
         </span>
       </div>
 
@@ -35,11 +35,11 @@ function TransactionHistory({ history, isLoading, error }) {
       <div className="mt-5 space-y-3">
         {isLoading ? (
           <div className="rounded-2xl border border-mist/70 bg-slate-50 px-4 py-4 text-sm text-slate">
-            Loading history...
+            Đang tải lịch sử...
           </div>
         ) : items.length === 0 ? (
           <div className="rounded-2xl border border-mist/70 bg-slate-50 px-4 py-4 text-sm text-slate">
-            No transactions yet.
+            Chưa có giao dịch.
           </div>
         ) : (
           items.map((item) => (
@@ -50,10 +50,10 @@ function TransactionHistory({ history, isLoading, error }) {
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="text-sm font-semibold text-ink">
-                    {item.type ?? "Transaction"}
+                    {item.type ?? "Giao dịch"}
                   </p>
                   <p className="mt-1 text-xs text-slate">
-                    {item.description || "Banking transfer"}
+                    {item.description || "Chuyển khoản ngân hàng"}
                   </p>
                 </div>
                 <div className="text-right">
@@ -71,15 +71,15 @@ function TransactionHistory({ history, isLoading, error }) {
               </div>
               <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-xs text-slate">
                 <span>
-                  From: {item.fromAccount ?? "--"}
-                  {item.toAccount ? `| To: ${item.toAccount}` : ""}
+                  Từ: {item.fromAccount ?? "--"}
+                  {item.toAccount ? `| Đến: ${item.toAccount}` : ""}
                 </span>
                 <span
                   className={`rounded-full border px-2.5 py-1 font-semibold ${statusStyles(
                     item.status,
                   )}`}
                 >
-                  {item.status ?? "Unknown"}
+                  {item.status ?? "Không rõ"}
                 </span>
               </div>
             </div>

@@ -10,7 +10,7 @@ function AuthLayout({ title, subtitle, children, footerText, footerLink }) {
         <div className="w-full max-w-xl pb-10 lg:pb-0">
           <div className="inline-flex items-center gap-2 rounded-full border border-mist/70 bg-white/80 px-4 py-2 text-sm font-medium text-ink shadow-sm">
             <span className="h-2 w-2 rounded-full bg-mint" />
-            Trusted personal finance suite
+            Bộ công cụ tài chính cá nhân đáng tin cậy
           </div>
           <h1 className="font-display mt-6 text-4xl font-semibold text-ink md:text-5xl">
             {title}
@@ -21,19 +21,19 @@ function AuthLayout({ title, subtitle, children, footerText, footerLink }) {
 
           <div className="mt-10 hidden rounded-3xl border border-mist/60 bg-white/70 p-6 shadow-glow backdrop-blur lg:block">
             <div className="flex items-center justify-between text-sm text-slate">
-              <span>Instant balance snapshots</span>
-              <span className="font-semibold text-ink">Live</span>
+              <span>Ảnh chụp số dư tức thì</span>
+              <span className="font-semibold text-ink">Trực tiếp</span>
             </div>
             <div className="mt-6 grid grid-cols-2 gap-4">
               <div className="rounded-2xl border border-mist/60 bg-white px-4 py-3">
                 <p className="text-xs uppercase tracking-[0.2em] text-slate">
-                  Checking
+                  Tài khoản thanh toán
                 </p>
                 <p className="mt-2 text-xl font-semibold text-ink">$12,480</p>
               </div>
               <div className="rounded-2xl border border-mist/60 bg-white px-4 py-3">
                 <p className="text-xs uppercase tracking-[0.2em] text-slate">
-                  Savings
+                  Tiết kiệm
                 </p>
                 <p className="mt-2 text-xl font-semibold text-ink">$42,915</p>
               </div>

@@ -22,7 +22,7 @@ function WithdrawForm({ onBalanceUpdate, onHistoryUpdate }) {
         amount: Number(formData.amount),
         pin: formData.pin,
       });
-      const message = response?.data?.message || "Withdrawal completed.";
+      const message = response?.data?.message || "Rút tiền thành công.";
       setStatus({ type: "success", message });
       setFormData({ amount: "", pin: "" });
       onBalanceUpdate?.(response?.data?.balance);
@@ -30,7 +30,7 @@ function WithdrawForm({ onBalanceUpdate, onHistoryUpdate }) {
     } catch (err) {
       const message =
         err?.response?.data?.message ||
-        "Withdrawal failed. Please verify your PIN.";
+        "Rút tiền thất bại. Vui lòng kiểm tra mã PIN.";
       setStatus({ type: "error", message });
     } finally {
       setIsSubmitting(false);
@@ -40,14 +40,12 @@ function WithdrawForm({ onBalanceUpdate, onHistoryUpdate }) {
   return (
     <div className="rounded-3xl border border-mist/70 bg-white/90 p-6 shadow-glow">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-ink">Withdraw</h3>
+        <h3 className="text-lg font-semibold text-ink">Rút tiền</h3>
         <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
-          Withdraw
+          Rút tiền
         </span>
       </div>
-      <p className="mt-2 text-sm text-slate">
-        Withdraw funds with your 6-digit PIN.
-      </p>
+      <p className="mt-2 text-sm text-slate">Rút tiền bằng mã PIN 6 chữ số.</p>
 
       <form className="mt-5 space-y-4" onSubmit={handleSubmit}>
         <div>
@@ -55,7 +53,7 @@ function WithdrawForm({ onBalanceUpdate, onHistoryUpdate }) {
             className="text-sm font-medium text-ink"
             htmlFor="withdrawAmount"
           >
-            Amount
+            Số tiền
           </label>
           <input
             className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
@@ -96,7 +94,7 @@ function WithdrawForm({ onBalanceUpdate, onHistoryUpdate }) {
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Withdrawing..." : "Withdraw funds"}
+          {isSubmitting ? "Đang rút tiền..." : "Rút tiền"}
         </button>
       </form>
     </div>

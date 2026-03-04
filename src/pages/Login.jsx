@@ -30,13 +30,15 @@ function Login() {
       if (token) {
         localStorage.setItem("authToken", token);
       }
-      setSuccess("Login successful. You can now access your account.");
+      setSuccess(
+        "Đăng nhập thành công. Bạn có thể truy cập tài khoản của mình.",
+      );
       setTimeout(() => {
         navigate("/dashboard");
       }, 500);
     } catch (err) {
       const message =
-        err?.response?.data?.message || "Login failed. Please try again.";
+        err?.response?.data?.message || "Đăng nhập thất bại. Vui lòng thử lại.";
       setError(message);
     } finally {
       setIsSubmitting(false);
@@ -45,20 +47,20 @@ function Login() {
 
   return (
     <AuthLayout
-      title="Welcome back"
-      subtitle="Review balances, move money, and stay on top of your banking in one secure place."
-      footerText="New here?"
-      footerLink={{ to: "/register", label: "Create an account" }}
+      title="Chào mừng trở lại"
+      subtitle="Xem số dư, chuyển tiền và quản lý tài chính an toàn trong một nơi."
+      footerText="Chưa có tài khoản?"
+      footerLink={{ to: "/register", label: "Tạo tài khoản" }}
     >
       <div>
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold text-ink">Sign in</h2>
+          <h2 className="text-2xl font-semibold text-ink">Đăng nhập</h2>
           <span className="rounded-full bg-mist/70 px-3 py-1 text-xs font-semibold text-slate">
-            Secure
+            Bảo mật
           </span>
         </div>
         <p className="mt-2 text-sm text-slate">
-          Use the email and password you registered with.
+          Sử dụng email và mật khẩu bạn đã đăng ký.
         </p>
 
         <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
@@ -71,7 +73,7 @@ function Login() {
               id="email"
               name="email"
               type="email"
-              placeholder="name@email.com"
+              placeholder="ten@email.com"
               value={formData.email}
               onChange={handleChange}
               required
@@ -80,14 +82,14 @@ function Login() {
 
           <div>
             <label className="text-sm font-medium text-ink" htmlFor="password">
-              Password
+              Mật khẩu
             </label>
             <input
               className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
               id="password"
               name="password"
               type="password"
-              placeholder="Enter your password"
+              placeholder="Nhập mật khẩu"
               value={formData.password}
               onChange={handleChange}
               required
@@ -110,21 +112,17 @@ function Login() {
             type="submit"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Signing in..." : "Sign in"}
+            {isSubmitting ? "Đang đăng nhập..." : "Đăng nhập"}
           </button>
         </form>
 
-        <div className="mt-6 rounded-2xl border border-mist/70 bg-slate-50 px-4 py-3 text-xs text-slate">
-          For demo use, ensure your backend is running on localhost:3000.
-        </div>
-
         <div className="mt-4 text-center text-xs text-slate">
-          Forgot your password?{" "}
+          Quên mật khẩu?{" "}
           <Link
             className="font-semibold text-ink hover:text-ocean"
             to="/register"
           >
-            Reset access
+            Khôi phục truy cập
           </Link>
         </div>
       </div>

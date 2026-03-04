@@ -11,9 +11,9 @@ function MainLayout() {
     <>
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate">
-          Mini Bank
+          Ngân hàng Mini
         </p>
-        <h2 className="mt-2 text-2xl font-semibold text-ink">Navigation</h2>
+        <h2 className="mt-2 text-2xl font-semibold text-ink">Điều hướng</h2>
       </div>
       <nav className="flex flex-col gap-2">
         <NavLink
@@ -26,7 +26,7 @@ function MainLayout() {
             }`
           }
         >
-          Dashboard
+          Bảng điều khiển
         </NavLink>
         <NavLink
           to="/transactions"
@@ -38,11 +38,11 @@ function MainLayout() {
             }`
           }
         >
-          Transaction History
+          Lịch sử giao dịch
         </NavLink>
         <div className="mt-4 border-t border-mist/70 pt-4">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate">
-            Quick actions
+            Thao tác nhanh
           </p>
           <div className="mt-3 flex flex-col gap-2">
             <NavLink
@@ -55,7 +55,7 @@ function MainLayout() {
                 }`
               }
             >
-              Deposit
+              Nạp tiền
             </NavLink>
             <NavLink
               to="/withdraw"
@@ -67,7 +67,7 @@ function MainLayout() {
                 }`
               }
             >
-              Withdraw
+              Rút tiền
             </NavLink>
             <NavLink
               to="/transfer"
@@ -79,7 +79,7 @@ function MainLayout() {
                 }`
               }
             >
-              Transfer
+              Chuyển tiền
             </NavLink>
           </div>
         </div>
@@ -94,15 +94,15 @@ function MainLayout() {
           className="rounded-2xl border border-mist/70 bg-white px-3 py-2 text-sm font-semibold text-ink"
           type="button"
           onClick={() => setIsDrawerOpen(true)}
-          aria-label="Open navigation"
+          aria-label="Mở điều hướng"
         >
-          Menu
+          Trình đơn
         </button>
         <div className="text-right">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate">
-            Mini Bank
+            Ngân hàng Mini
           </p>
-          <p className="text-sm font-semibold text-ink">Dashboard</p>
+          <p className="text-sm font-semibold text-ink">Bảng điều khiển</p>
         </div>
       </header>
 
@@ -112,17 +112,17 @@ function MainLayout() {
             className="absolute inset-0 h-full w-full bg-slate-900/30"
             type="button"
             onClick={() => setIsDrawerOpen(false)}
-            aria-label="Close navigation"
+            aria-label="Đóng điều hướng"
           />
           <div className="relative z-50 h-full w-72 rounded-r-3xl border border-mist/60 bg-white/95 p-6 shadow-glow">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-ink">Navigation</p>
+              <p className="text-sm font-semibold text-ink">Điều hướng</p>
               <button
                 className="rounded-2xl border border-mist/70 bg-white px-3 py-1 text-xs font-semibold text-ink"
                 type="button"
                 onClick={() => setIsDrawerOpen(false)}
               >
-                Close
+                Đóng
               </button>
             </div>
             <div className="mt-6 flex flex-col gap-6">{navContent}</div>

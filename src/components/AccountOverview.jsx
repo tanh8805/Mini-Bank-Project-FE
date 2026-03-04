@@ -18,20 +18,20 @@ function AccountOverview({
         ) : (
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-sm font-medium text-slate">Total balance</p>
+              <p className="text-sm font-medium text-slate">Tổng số dư</p>
               <p className="mt-2 text-3xl font-semibold text-ink md:text-4xl">
                 {balance}
               </p>
               <p className="mt-2 text-xs text-slate">
-                Account number: {accountNumber}
+                Số tài khoản: {accountNumber}
               </p>
             </div>
             <div className="rounded-2xl border border-mist/70 bg-white/80 px-5 py-4">
               <p className="text-xs uppercase tracking-[0.2em] text-slate">
-                Status
+                Trạng thái
               </p>
               <p className="mt-3 text-sm font-semibold text-ink">{status}</p>
-              <p className="mt-1 text-xs text-slate">Updated {lastUpdated}</p>
+              <p className="mt-1 text-xs text-slate">Cập nhật {lastUpdated}</p>
             </div>
           </div>
         )}
@@ -39,12 +39,12 @@ function AccountOverview({
 
       <div className="rounded-3xl border border-mist/70 bg-white/90 p-8 shadow-glow">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate">
-          Insights
+          Thông tin
         </p>
         <div className="mt-5 divide-y divide-mist/70 text-sm text-slate">
-          <div className="py-3">Balance updates every 60 seconds.</div>
-          <div className="py-3">Transfers require a secure PIN.</div>
-          <div className="py-3">History shows your latest 5 actions.</div>
+          <div className="py-3">Số dư cập nhật mỗi 60 giây.</div>
+          <div className="py-3">Chuyển khoản yêu cầu mã PIN bảo mật.</div>
+          <div className="py-3">Lịch sử hiển thị 5 giao dịch gần nhất.</div>
         </div>
       </div>
     </section>

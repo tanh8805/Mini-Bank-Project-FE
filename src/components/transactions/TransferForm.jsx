@@ -27,7 +27,7 @@ function TransferForm({ onBalanceUpdate, onHistoryUpdate }) {
         amount: Number(formData.amount),
         pin: formData.pin,
       });
-      const message = response?.data?.message || "Transfer completed.";
+      const message = response?.data?.message || "Chuyển tiền thành công.";
       setStatus({ type: "success", message });
       setFormData({ toAccountNumber: "", amount: "", pin: "" });
       onBalanceUpdate?.(response?.data?.balance);
@@ -35,7 +35,7 @@ function TransferForm({ onBalanceUpdate, onHistoryUpdate }) {
     } catch (err) {
       const message =
         err?.response?.data?.message ||
-        "Transfer failed. Please check the details.";
+        "Chuyển tiền thất bại. Vui lòng kiểm tra thông tin.";
       setStatus({ type: "error", message });
     } finally {
       setIsSubmitting(false);
@@ -45,13 +45,13 @@ function TransferForm({ onBalanceUpdate, onHistoryUpdate }) {
   return (
     <div className="rounded-3xl border border-mist/70 bg-white/90 p-6 shadow-glow">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-ink">Transfer</h3>
+        <h3 className="text-lg font-semibold text-ink">Chuyển tiền</h3>
         <span className="rounded-full bg-ocean/15 px-3 py-1 text-xs font-semibold text-ocean">
-          Transfer
+          Chuyển tiền
         </span>
       </div>
       <p className="mt-2 text-sm text-slate">
-        Send money to any account instantly.
+        Gửi tiền đến bất kỳ tài khoản nào ngay lập tức.
       </p>
 
       <form className="mt-5 space-y-4" onSubmit={handleSubmit}>
@@ -60,7 +60,7 @@ function TransferForm({ onBalanceUpdate, onHistoryUpdate }) {
             className="text-sm font-medium text-ink"
             htmlFor="toAccountNumber"
           >
-            Recipient account number
+            Số tài khoản người nhận
           </label>
           <input
             className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
@@ -80,7 +80,7 @@ function TransferForm({ onBalanceUpdate, onHistoryUpdate }) {
             className="text-sm font-medium text-ink"
             htmlFor="transferAmount"
           >
-            Amount
+            Số tiền
           </label>
           <input
             className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
@@ -121,7 +121,7 @@ function TransferForm({ onBalanceUpdate, onHistoryUpdate }) {
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Sending..." : "Send transfer"}
+          {isSubmitting ? "Đang gửi..." : "Gửi chuyển khoản"}
         </button>
       </form>
     </div>
