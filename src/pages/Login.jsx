@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../api/axios.js";
 import AuthLayout from "../components/AuthLayout.jsx";
 
@@ -12,6 +12,8 @@ function Login() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [info, setInfo] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -81,14 +83,28 @@ function Login() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-ink" htmlFor="password">
-              Mật khẩu
-            </label>
+            <div className="flex items-center justify-between">
+              <label
+                className="text-sm font-medium text-ink"
+                htmlFor="password"
+              >
+                Mật khẩu
+              </label>
+              <label className="flex items-center gap-2 text-xs text-slate">
+                <input
+                  className="h-4 w-4 rounded border-mist/70 text-ink focus:ring-ocean/30"
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={(event) => setShowPassword(event.target.checked)}
+                />
+                Hiện mật khẩu
+              </label>
+            </div>
             <input
               className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
               id="password"
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Nhập mật khẩu"
               value={formData.password}
               onChange={handleChange}
@@ -118,13 +134,19 @@ function Login() {
 
         <div className="mt-4 text-center text-xs text-slate">
           Quên mật khẩu?{" "}
-          <Link
+          <button
             className="font-semibold text-ink hover:text-ocean"
-            to="/register"
+            type="button"
+            onClick={() => setInfo("Đang trong quá trình phát triển")}
           >
             Khôi phục truy cập
-          </Link>
+          </button>
         </div>
+        {info ? (
+          <div className="mt-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-700">
+            {info}
+          </div>
+        ) : null}
       </div>
     </AuthLayout>
   );

@@ -7,11 +7,14 @@ function Register() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
     pin: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,6 +25,12 @@ function Register() {
     event.preventDefault();
     setError("");
     setSuccess("");
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Mật khẩu xác nhận không khớp.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -31,7 +40,7 @@ function Register() {
         pin: formData.pin,
       });
       setSuccess("Tạo tài khoản thành công. Vui lòng đăng nhập để tiếp tục.");
-      setFormData({ email: "", password: "", pin: "" });
+      setFormData({ email: "", password: "", confirmPassword: "", pin: "" });
     } catch (err) {
       const message =
         err?.response?.data?.message || "Đăng ký thất bại. Vui lòng thử lại.";
@@ -77,16 +86,62 @@ function Register() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-ink" htmlFor="password">
-              Mật khẩu
-            </label>
+            <div className="flex items-center justify-between">
+              <label
+                className="text-sm font-medium text-ink"
+                htmlFor="password"
+              >
+                Mật khẩu
+              </label>
+              <label className="flex items-center gap-2 text-xs text-slate">
+                <input
+                  className="h-4 w-4 rounded border-mist/70 text-ink focus:ring-ocean/30"
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={(event) => setShowPassword(event.target.checked)}
+                />
+                Hiện mật khẩu
+              </label>
+            </div>
             <input
               className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
               id="password"
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Ít nhất 8 ký tự"
               value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                className="text-sm font-medium text-ink"
+                htmlFor="confirmPassword"
+              >
+                Xác nhận mật khẩu
+              </label>
+              <label className="flex items-center gap-2 text-xs text-slate">
+                <input
+                  className="h-4 w-4 rounded border-mist/70 text-ink focus:ring-ocean/30"
+                  type="checkbox"
+                  checked={showConfirmPassword}
+                  onChange={(event) =>
+                    setShowConfirmPassword(event.target.checked)
+                  }
+                />
+                Hiện mật khẩu
+              </label>
+            </div>
+            <input
+              className="mt-2 w-full rounded-2xl border border-mist/70 bg-white px-4 py-3 text-sm text-ink shadow-sm outline-none transition focus:border-ocean focus:ring-2 focus:ring-ocean/20"
+              id="confirmPassword"
+              name="confirmPassword"
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Nhập lại mật khẩu"
+              value={formData.confirmPassword}
               onChange={handleChange}
               required
             />
