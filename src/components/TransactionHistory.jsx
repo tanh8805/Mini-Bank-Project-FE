@@ -49,12 +49,14 @@ function TransactionHistory({ transactions = [], isLoading, error }) {
             const dateLabel = item.createdAt
               ? new Date(item.createdAt).toLocaleString()
               : item.date || "--";
-            const fromLabel = item.fromAccount || item.from || "--";
-            const toLabel = item.toAccount || item.to || "--";
+            const fromAccountLabel = item.fromAccount || item.from || "--";
+            const toAccountLabel = item.toAccount || item.to || "--";
+            const fromUserLabel = item.fromUser || "--";
+            const toUserLabel = item.toUser || "--";
             const statusLabel = item.status || "Thành công";
             const statusTone = statusLabel.toLowerCase();
             const statusColor =
-              statusTone === "success"
+              statusTone === "success" || statusTone === "completed"
                 ? "bg-emerald-500"
                 : statusTone === "pending"
                   ? "bg-amber-400"
@@ -65,7 +67,7 @@ function TransactionHistory({ transactions = [], isLoading, error }) {
                 key={item.reference ?? item.id ?? item.createdAt}
                 className="rounded-2xl border border-mist/70 bg-white px-4 py-4"
               >
-                <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2">
                       <span
@@ -78,9 +80,15 @@ function TransactionHistory({ transactions = [], isLoading, error }) {
                     <p className="mt-1 text-xs text-slate">
                       {item.description || "Chuyển khoản ngân hàng"}
                     </p>
-                    <p className="mt-2 text-xs text-slate">
-                      Từ: {fromLabel} | Đến: {toLabel}
-                    </p>
+                    <div className="mt-3 space-y-1 text-xs text-slate">
+                      <p>
+                        Từ: {fromAccountLabel} • {fromUserLabel}
+                      </p>
+                      <p>
+                        Đến: {toAccountLabel} • {toUserLabel}
+                      </p>
+                      <p>Mã tham chiếu: {item.reference || "--"}</p>
+                    </div>
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-semibold text-ink">
